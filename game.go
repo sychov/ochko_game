@@ -18,13 +18,13 @@ type Game struct {
 	userHand          objects.Hand
 }
 
-// ShowWinsCounter : show counters of wins
-func (game *Game) ShowWinsCounter() {
+// ShowGlobalScore : show counters of wins
+func (game *Game) ShowGlobalScore() {
 	fmt.Printf("Текущий счет (Вы / компьютер) - %d:%d\n", game.winsPlayerCounter, game.winsAiCounter)
 }
 
-// TurnAi : AI player makes his move
-func (game *Game) TurnAi() {
+// MakeAiTurn : AI player makes his move
+func (game *Game) MakeAiTurn() {
 	game.aiHand = objects.GetInitialHand(&game.deck)
 	count := 0
 	for game.aiHand.Calculate() < game.treshold {
@@ -39,8 +39,8 @@ func (game *Game) TurnAi() {
 	}
 }
 
-// TurnUser : User makes his turn
-func (game *Game) TurnUser() {
+// MakeUserTurn : User makes his turn
+func (game *Game) MakeUserTurn() {
 	game.userHand = objects.GetInitialHand(&game.deck)
 	println("Ваш ход.")
 	for game.userHand.Calculate() < 21 {
@@ -59,8 +59,8 @@ func (game *Game) TurnUser() {
 	}
 }
 
-// ProceedHands : compare hands, show winner
-func (game *Game) ProceedHands() {
+// CheckResult : compare hands, show winner
+func (game *Game) CheckResult() {
 	println("Рука противника:", game.aiHand.GetRepresentation())
 	userScore := game.userHand.Calculate()
 	aiScore := game.aiHand.Calculate()

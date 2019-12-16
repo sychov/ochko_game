@@ -9,14 +9,14 @@ func main() {
 	game := NewGame()
 	for {
 		if game.isAiMove {
-			game.TurnAi()
-			game.TurnUser()
+			game.MakeAiTurn()
+			game.MakeUserTurn()
 		} else {
-			game.TurnUser()
-			game.TurnAi()
+			game.MakeUserTurn()
+			game.MakeAiTurn()
 		}
-		game.ProceedHands()
-		game.ShowWinsCounter()
+		game.CheckResult()
+		game.ShowGlobalScore()
 
 		choice := console.Ask("Продолжим? (Y/N)", []rune{'y', 'n'})
 		if choice == 1 {
