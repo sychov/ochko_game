@@ -1,1 +1,3 @@
-# ochko_game
+# "ochko" game
+
+Exercise of Golang
